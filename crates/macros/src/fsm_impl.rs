@@ -359,6 +359,7 @@ impl StateMachineDefinition {
                         // If events do not have a handler, attempt to construct the next state
                         // using `Default`.
                         if let [new_state] = ts.to.as_slice() {
+                            let from = &ts.from;
                             let span = new_state.span();
                             let default_trans = quote_spanned! { span =>
                             let res = TransitionResult::<Self, #new_state>::from::<#from>(state_data);
